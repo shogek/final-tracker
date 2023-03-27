@@ -8,6 +8,7 @@ let faviconURL = '/favicon.svg'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/final-tracker/',
   plugins: [
     react(),
     VitePWA({
