@@ -18,9 +18,23 @@ export function Day({ }: DayProps): JSX.Element {
 					2023-03-28  ·  {format(new Date(), 'EEEE')}
 				</h3>
 
-				<button className="day__button" type="button" onClick={() => setEditMode(true)}>
-					✏️
-				</button>
+				{!isEditMode && (
+					<button className="day__button" type="button" onClick={() => setEditMode(true)}>
+						✏️
+					</button>
+				)}
+
+				{isEditMode && (
+					<>
+						<button className="day__button" type="button" onClick={() => setEditMode(false)}>
+							✔️
+						</button>
+
+						<button className="day__button" type="button" onClick={() => setEditMode(false)}>
+							❌
+						</button>
+					</>
+				)}
 			</div>
 
 			{isEditMode && (<EditableDay />)}
