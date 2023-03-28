@@ -1,5 +1,5 @@
 import './App.scss'
-import Day from './features/Day/Day'
+import { Day } from './features/Day/Day'
 
 function App() {
   return (
