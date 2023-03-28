@@ -5,6 +5,8 @@
     align-items: flex-start;
 
     &__line {
+        display: flex;
+        gap: 8px;
         margin: 0;
     }
 }

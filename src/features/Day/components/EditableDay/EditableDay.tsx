@@ -1,4 +1,5 @@
 import React from 'react'
+import { ACHIEVEMENTS } from '../../../../configuration/achievements.config'
 import './EditableDay.scss'
 
 interface EditableDayProps {
@@ -9,30 +10,30 @@ export default function EditableDay({ }: EditableDayProps): JSX.Element {
     return (
         <div className="editable-day">
             <div>
-                <input type="checkbox" name="fasted-16" value="fasted-16" />
-                <label htmlFor="fasted-16">
-                    ✓ Fasted 16h
-                </label>
-            </div>
-
-            <div>
-                <input type="checkbox" name="no-dark-chocolate" value="no-dark-chocolate" />
+                <input type="checkbox" name="no-dark-chocolate" value={ACHIEVEMENTS.noDarkChocolate.id} />
                 <label htmlFor="no-dark-chocolate">
-                    ✓ No dark chocolate
+                    {ACHIEVEMENTS.noDarkChocolate.label}
                 </label>
             </div>
 
             <div>
-                <input type="checkbox" name="no-snacking" value="no-snacking" />
+                <input type="checkbox" name="no-snacking" value={ACHIEVEMENTS.noSnacking.id} />
                 <label htmlFor="no-snacking">
-                    ✓ No snacking
+                    {ACHIEVEMENTS.noSnacking.label}
                 </label>
             </div>
 
             <div>
-                <input type="checkbox" name="10k-steps" value="10k-steps" />
+                <input type="checkbox" name="fasted-16" value={ACHIEVEMENTS.fasted16.id} />
+                <label htmlFor="fasted-16">
+                    {ACHIEVEMENTS.fasted16.label}
+                </label>
+            </div>
+
+            <div>
+                <input type="checkbox" name="10k-steps" value={ACHIEVEMENTS.tenSteps.id} />
                 <label htmlFor="10k-steps">
-                    ✓ 10k steps
+                    {ACHIEVEMENTS.tenSteps.label}
                 </label>
             </div>
 
