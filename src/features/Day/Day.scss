@@ -1,11 +1,34 @@
 .day {
-   &__title-wrapper {
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+
+   &__heading {
       display: flex;
       justify-content: space-between;
-      gap: 16px;
-   }
+      gap: 8px;
 
-   &__title {
-      margin: 0;
+      &-left-col {
+         display: flex;
+         flex-direction: column;
+         gap: 4px;
+         align-items: flex-start;
+      }
+
+      &-date {
+         margin: 0;
+      }
+
+      &-weekday {
+         font-size: 14px;
+         color: #5c5c5c;
+      }
+
+      &-right-col {
+         display: flex;
+         flex-direction: column;
+         gap: 4px;
+         align-items: flex-start;
+      }
    }
 }

@@ -12,6 +12,10 @@ export default function ReadonlyDay({ }: ReadonlyDayProps): JSX.Element {
       <div className="readonly-day">
          <p className="readonly-day__line">
             <span>✓</span>
+            {ACHIEVEMENTS.noDarkChocolate.label}
+         </p>
+         <p className="readonly-day__line">
+            <span>✓</span>
             {ACHIEVEMENTS.fasted16.label}
          </p>
          <p className="readonly-day__line">

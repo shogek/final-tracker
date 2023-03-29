@@ -13,28 +13,35 @@ export function Day({ }: DayProps): JSX.Element {
 
 	return (
 		<article className="day">
-			<div className="day__title-wrapper">
-				<h3 className="day__title">
-					2023-03-28  ·  {format(new Date(), 'EEEE')}
-				</h3>
+			<div className="day__heading">
+				<div className="day__heading-left-col">
+					<h3 className="day__heading-date">
+						2023-03-28
+					</h3>
+					<span className="day__heading-weekday">
+						{format(new Date(), 'EEEE')}
+					</span>
+				</div>
 
-				{!isEditMode && (
-					<button className="day__button" type="button" onClick={() => setEditMode(true)}>
-						✏️
-					</button>
-				)}
-
-				{isEditMode && (
-					<>
-						<button className="day__button" type="button" onClick={() => setEditMode(false)}>
-							✔️
+				<div className="day__heading-right-col">
+					{!isEditMode && (
+						<button className="day__button" type="button" onClick={() => setEditMode(true)}>
+							✏️
 						</button>
+					)}
 
-						<button className="day__button" type="button" onClick={() => setEditMode(false)}>
-							❌
-						</button>
-					</>
-				)}
+					{isEditMode && (
+						<>
+							<button className="day__button" type="button" onClick={() => setEditMode(false)}>
+								✔️
+							</button>
+
+							<button className="day__button" type="button" onClick={() => setEditMode(false)}>
+								❌
+							</button>
+						</>
+					)}
+				</div>
 			</div>
 
 			{isEditMode && (<EditableDay />)}
