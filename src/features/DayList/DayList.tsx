@@ -9,7 +9,7 @@ interface DayListProps {
 export default function DayList({ days }: DayListProps): JSX.Element {
    return (
       <div className="day-list">
-         {days.map((day) => (<Day day={day} />))}
+         {days.map((day) => (<Day key={day.date.getTime()} day={day} />))}
       </div>
    )
 }

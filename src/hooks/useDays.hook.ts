@@ -38,6 +38,7 @@ export default function useDays(): IUseDays {
 
             setState({
                // TODO: Use "Mongoose" for mapping?
+               // TODO: Use a query on the backend for sorting?
                days: days.sort((a, b) => b.date.getTime() - a.date.getTime()),
                error: null,
                isLoading: false,
