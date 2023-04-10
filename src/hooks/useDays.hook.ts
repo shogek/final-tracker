@@ -34,11 +34,11 @@ export default function useDays(): IUseDays {
          try {
             const mongo = user.mongoClient('mongodb-atlas')
             const collection = mongo.db(ENVIRONMENT.databaseName).collection(ENVIRONMENT.databaseTable)
-            const days = await collection.find()
+            const days: IDay[] = await collection.find()
 
             setState({
                // TODO: Use "Mongoose" for mapping?
-               days,
+               days: days.sort((a, b) => b.date.getTime() - a.date.getTime()),
                error: null,
                isLoading: false,
             })
