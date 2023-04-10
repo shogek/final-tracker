@@ -1,29 +1,41 @@
-import React from 'react'
 import './ReadonlyDay.scss'
-import { format } from 'date-fns'
 import { ACHIEVEMENTS } from '../../../configuration/achievements.config'
+import { IDay } from '../../../models/Day.model'
 
 interface ReadonlyDayProps {
-
+   day: IDay
 }
 
-export default function ReadonlyDay({ }: ReadonlyDayProps): JSX.Element {
+export default function ReadonlyDay({ day }: ReadonlyDayProps): JSX.Element {
    return (
       <div className="readonly-day">
          <p className="readonly-day__line">
-            <span>✓</span>
-            {ACHIEVEMENTS.noDarkChocolate.label}
+            {day.darkChocolateCount < 1 && (
+               <>
+                  <span>✓</span>
+                  {ACHIEVEMENTS.noDarkChocolate.label}
+               </>
+            )}
          </p>
          <p className="readonly-day__line">
-            <span>✓</span>
-            {ACHIEVEMENTS.fasted16.label}
+            {day.hasFasted && (
+               <>
+                  <span>✓</span>
+                  {ACHIEVEMENTS.fasted16.label}
+               </>
+            )}
          </p>
          <p className="readonly-day__line">
-            <span>✓</span>
-            {ACHIEVEMENTS.tenSteps.label}
+            {day.hasWalkedSteps && (
+               <>
+                  <span>✓</span>
+                  {ACHIEVEMENTS.tenSteps.label}
+               </>
+            )}
          </p>
-         <p className="readonly-day__line">S × 0</p>
-         <p className="readonly-day__line">Kvd × 2</p>
+         <p className="readonly-day__line">S × {day.sexCount}</p>
+         <p className="readonly-day__line">Kava × {day.coffeeCupsCount}</p>
+         <p className="readonly-day__line">Kvd × {day.darkChocolateCount}</p>
       </div>
    )
 }

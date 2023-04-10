@@ -24,11 +24,7 @@ export default function Home(): JSX.Element {
 
    return (
       <div>
-         WE HAVE THE DAYS
-         {days.map(x => (
-            <div>{JSON.stringify(x)}</div>
-         ))}
-         <DayList />
+         <DayList days={days} />
       </div>
    )
 }

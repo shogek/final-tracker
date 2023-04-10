@@ -1,9 +1,9 @@
-import React from 'react'
 import { ACHIEVEMENTS } from '../../../configuration/achievements.config'
 import './EditableDay.scss'
+import { IDay } from '../../../models/Day.model'
 
 interface EditableDayProps {
-
+    day: IDay
 }
 
 export default function EditableDay({ }: EditableDayProps): JSX.Element {

@@ -1,9 +1,15 @@
-import React from 'react'
+import { IDay } from '../../models/Day.model'
+import { Day } from './Day/Day'
+import './DayList.scss'
 
-export default function DayList(): JSX.Element {
+interface DayListProps {
+   days: IDay[]
+}
+
+export default function DayList({ days }: DayListProps): JSX.Element {
    return (
-      <div>
-         DayList
+      <div className="day-list">
+         {days.map((day) => (<Day day={day} />))}
       </div>
    )
 }

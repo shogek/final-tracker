@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './Day.scss'
 import { format } from 'date-fns'
 import ReadonlyDay from '../ReadonlyDay/ReadonlyDay'
 import EditableDay from '../EditableDay/EditableDay'
+import { IDay } from '../../../models/Day.model'
 
 interface DayProps {
-
+	day: IDay
 }
 
-export function Day({ }: DayProps): JSX.Element {
+export function Day({ day }: DayProps): JSX.Element {
 	const [isEditMode, setEditMode] = useState(false);
 
 	return (
@@ -16,10 +17,10 @@ export function Day({ }: DayProps): JSX.Element {
 			<div className="day__heading">
 				<div className="day__heading-left-col">
 					<h3 className="day__heading-date">
-						2023-03-28
+						{format(day.date, 'yyyy-MM-dd')}
 					</h3>
 					<span className="day__heading-weekday">
-						{format(new Date(), 'EEEE')}
+						{format(day.date, 'EEEE')}
 					</span>
 				</div>
 
@@ -44,8 +45,8 @@ export function Day({ }: DayProps): JSX.Element {
 				</div>
 			</div>
 
-			{isEditMode && (<EditableDay />)}
-			{!isEditMode && (<ReadonlyDay />)}
+			{isEditMode && (<EditableDay day={day} />)}
+			{!isEditMode && (<ReadonlyDay day={day} />)}
 		</article>
 	)
 }
