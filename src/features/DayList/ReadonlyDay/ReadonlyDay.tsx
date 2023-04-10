@@ -1,7 +1,7 @@
 import React from 'react'
 import './ReadonlyDay.scss'
 import { format } from 'date-fns'
-import { ACHIEVEMENTS } from '../../../../configuration/achievements.config'
+import { ACHIEVEMENTS } from '../../../configuration/achievements.config'
 
 interface ReadonlyDayProps {
 

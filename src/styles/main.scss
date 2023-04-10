@@ -1,0 +1,30 @@
+* {
+   box-sizing: border-box;
+}
+
+:root {
+   font-family: 'Martian Mono', monospace;
+   font-size: 16px;
+   line-height: 24px;
+   font-weight: 400;
+}
+
+body {
+   margin: 0;
+   display: flex;
+   min-width: 320px;
+   min-height: 100vh;
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+#root {
+   max-width: 1280px;
+   margin: 0 auto;
+   padding: 2rem;
+   text-align: center;
+}

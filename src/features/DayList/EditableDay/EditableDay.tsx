@@ -1,5 +1,5 @@
 import React from 'react'
-import { ACHIEVEMENTS } from '../../../../configuration/achievements.config'
+import { ACHIEVEMENTS } from '../../../configuration/achievements.config'
 import './EditableDay.scss'
 
 interface EditableDayProps {

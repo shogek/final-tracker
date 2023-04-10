@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import './Day.scss'
 import { format } from 'date-fns'
-import ReadonlyDay from './components/ReadonlyDay/ReadonlyDay'
-import EditableDay from './components/EditableDay/EditableDay'
+import ReadonlyDay from '../ReadonlyDay/ReadonlyDay'
+import EditableDay from '../EditableDay/EditableDay'
 
 interface DayProps {
 
