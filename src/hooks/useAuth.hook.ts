@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import * as Realm from 'realm-web'
-import { ENVIRONMENT } from '../configuration/environment.config'
+import authService from '../services/auth-service/auth.service'
+import { IUser } from '../types/User.type'
+import { IError } from '../types/Error.type'
 
 interface UseAuthState {
-   user: any | null
-   error: string | null
+   user: IUser | null
+   error: IError | null
    isLoading: boolean
 }
 
@@ -19,32 +20,31 @@ export default function useAuth(): IUseAuth {
 
    useEffect(() => {
       async function signIn() {
-         // TODO: Switch to email/password credentials
-         // const credentials = Realm.Credentials.emailPassword(APP_USERNAME, APP_PASSWORD);
-
          setState({
             user: null,
             error: null,
             isLoading: true,
          })
 
-         try {
-            const app = new Realm.App({ id: ENVIRONMENT.appId })
-            const credentials = Realm.Credentials.anonymous()
-            const user = await app.logIn(credentials)
+         const {
+            user,
+            error,
+         } = await authService.getUser()
 
-            setState({
-               user,
-               error: null,
-               isLoading: false,
-            })
-         } catch (e: any) {
+         if (error || !user) {
             setState({
                user: null,
-               error: e.toString(),
+               error: error || 'Failed to retrieve the user!',
                isLoading: false,
             })
+            return
          }
+
+         setState({
+            user,
+            error: null,
+            isLoading: false,
+         })
       }
 
       signIn();

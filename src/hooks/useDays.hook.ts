@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { ENVIRONMENT } from '../configuration/environment.config';
-import useAuth from './useAuth.hook';
 import { IDay } from '../models/Day.model';
+import dayService from '../services/day-service/day.service';
 
 interface UseDaysState {
    days: IDay[]
@@ -12,7 +11,6 @@ interface UseDaysState {
 type IUseDays = UseDaysState
 
 export default function useDays(): IUseDays {
-   const { user } = useAuth()
    const [state, setState] = useState<UseDaysState>({
       days: [],
       error: null,
@@ -20,10 +18,6 @@ export default function useDays(): IUseDays {
    })
 
    useEffect(() => {
-      if (!user) {
-         return
-      }
-
       async function getAllDays() {
          setState({
             days: [],
@@ -31,29 +25,29 @@ export default function useDays(): IUseDays {
             isLoading: true,
          })
 
-         try {
-            const mongo = user.mongoClient('mongodb-atlas')
-            const collection = mongo.db(ENVIRONMENT.databaseName).collection(ENVIRONMENT.databaseTable)
-            const days: IDay[] = await collection.find()
+         const {
+            days,
+            error,
+         } = await dayService.getAllDays()
 
-            setState({
-               // TODO: Use "Mongoose" for mapping?
-               // TODO: Use a query on the backend for sorting?
-               days: days.sort((a, b) => b.date.getTime() - a.date.getTime()),
-               error: null,
-               isLoading: false,
-            })
-         } catch (e: any) {
+         if (error || !days) {
             setState({
                days: [],
-               error: e.toString(),
+               error: error || 'Failed to retrieve the days!',
                isLoading: false,
             })
+            return
          }
+
+         setState({
+            days: days.sort((a, b) => b.date.getTime() - a.date.getTime()),
+            error: null,
+            isLoading: false,
+         })
       }
 
       getAllDays()
-   }, [user])
+   }, [])
 
    return {
       days: state.days,
