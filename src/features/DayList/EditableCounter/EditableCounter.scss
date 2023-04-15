@@ -1,0 +1,12 @@
+.editable-counter {
+   display: flex;
+   gap: 8px;
+
+   .increase {
+      color: greenyellow;
+   }
+
+   .decrease {
+      color: red;
+   }
+}

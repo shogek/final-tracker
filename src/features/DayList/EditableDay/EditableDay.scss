@@ -2,13 +2,4 @@
    display: flex;
    flex-direction: column;
    align-items: flex-start;
-
-   &__number-row {
-      display: flex;
-      gap: 8px;
-   }
-
-   &__number-input {
-      width: 4ch;
-   }
 }
